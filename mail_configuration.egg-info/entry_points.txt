@@ -1,0 +1,3 @@
+[console_scripts]
+your_script = mail_configuration.scripts:main
+

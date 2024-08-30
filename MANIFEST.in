@@ -1,0 +1,9 @@
+include LICENSE
+include README.md
+recursive-include mail_configuration *.py
+exclude solutionizeit_mail_engine/*
+exclude venv/*
+exclude tests/*
+exclude README copy.md
+exclude .gitignore
+exclude db.sqlite3
