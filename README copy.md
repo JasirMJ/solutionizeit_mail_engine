@@ -15,8 +15,6 @@ twine check .\dist\* # to check for errors
 To upload to testpypi or live
 =============================
 
-
-
 twine upload --verbose  --repository testpypi dist/*
 
 twine upload --verbose  dist/*

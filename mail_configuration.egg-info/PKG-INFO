@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: mail-configuration
-Version: 0.1
+Version: 0.0.2
 Summary: A Django app for configuring mail
-Home-page: https://github.com/yourusername/mail_configuration
+Home-page: https://github.com/JasirMJ/solutionizeit_mail_engine
 Author: jasirmj
 Author-email: jasirmj@gmail.com
 Maintainer: jasirmj
