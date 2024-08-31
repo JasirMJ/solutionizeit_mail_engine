@@ -14,11 +14,34 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import path
 
-# from mail_configuration.views import TestMail
+from mail_configuration.views import sit_send_mail
+
+
+def driver_function(request):
+    print("Driver function called")
+    payload = {
+        "mail_service": "smtp",
+        "email_from": "goshweet@gmail.com",
+        "recipient_list": "jasirmj@gmail.com",
+        "subject": "Test Mail",
+        "html_template": "OTP",
+        "variables": {
+            "otp": "0786",
+            "content": "Hi your otp is",
+            "brand": "SolutionizeIT"
+        }
+    }
+
+    sit_send_mail(**payload)
+
+    return HttpResponse("Driver function called")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('mail/', driver_function),
     # path('mail/', TestMail.as_view()),
 ]

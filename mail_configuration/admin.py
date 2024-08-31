@@ -13,12 +13,12 @@ class MailingServiceAdmin(admin.ModelAdmin):
 
 @admin.register(MailRecord)
 class MailRecordAdmin(admin.ModelAdmin):
-    list_display = ('id', 'subject', 'sent_at')
+    list_display = ('id', 'subject', 'to_mail', 'is_success', 'created_date')
 
 
 # @admin.register(EmailTemplate)
 class EmailTemplateAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'subject')
+    list_display = ('id', 'name', )
 
 
 admin.site.register(EmailTemplate, EmailTemplateAdmin)

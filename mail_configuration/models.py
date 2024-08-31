@@ -1,11 +1,19 @@
 from django.db import models
 
+from mail_configuration.constants import MAILING_SERVICE_SENDGRID, MAILING_SERVICE_SMTP
+
 # Create your models here.
+MAILING_SERVICE_CHOICES = (
+    (MAILING_SERVICE_SMTP, MAILING_SERVICE_SMTP),
+    (MAILING_SERVICE_SENDGRID, MAILING_SERVICE_SENDGRID),
+    # Add more services as needed
+)
 
 
 class MailingService(models.Model):
     # e.g., 'SMTP', 'SendGrid'
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50, unique=True,
+                            choices=MAILING_SERVICE_CHOICES)
     # e.g., 'django.core.mail.backends.smtp.EmailBackend'
     email_backend = models.CharField(max_length=255, null=True, blank=True)
     # For services like SendGrid
@@ -18,12 +26,13 @@ class MailingService(models.Model):
     email_host_user = models.EmailField(blank=True, null=True)  # For SMTP
     email_host_password = models.CharField(
         max_length=255, blank=True, null=True)  # For SMTP
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
 
     def get_backend_config(self):
-        print("\n\n\nSelf name", self.name)
         if self.name.lower() == 'smtp':
             return {
                 'EMAIL_BACKEND': self.email_backend,
@@ -44,37 +53,28 @@ class MailingService(models.Model):
         else:
             return {}
 
-# class MailConfiguration(models.Model):
-#     name = models.CharField(max_length=50)  # Optional: to identify different configurations
-#     service = models.ForeignKey(MailingService, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return f'{self.name} ({self.service.name})'
-
-#     def get_backend_config(self):
-#         return self.service.get_backend_config()
-
 
 class MailRecord(models.Model):
     subject = models.CharField(max_length=255)
+    sender_mail = models.CharField(max_length=100, blank=False, null=False)
+    to_mail = models.JSONField(max_length=100, blank=False, null=False)
+    cc_mail = models.JSONField(max_length=100, blank=True, null=True)
+    bcc_mail = models.JSONField(max_length=100, blank=True, null=True)
+    payload_json = models.JSONField(null=True, blank=True)
     body = models.TextField()
-    recipient = models.EmailField()
-    sent_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20)  # e.g., 'sent', 'failed', etc.
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    is_success = models.BooleanField(default=False)
+    mail_response = models.TextField(blank=True, null=True)
     service = models.ForeignKey(
         MailingService, on_delete=models.SET_NULL, null=True, blank=True)
     # Store any response or error message
-    response = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return f'{self.subject} to {self.recipient} ({self.status})'
 
 
 class EmailTemplate(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    subject = models.CharField(max_length=255)
     template_html = models.TextField(
-        help_text="Variables format ##OTP##  ,for preview copy html content and paste it on https://www.programiz.com/html/online-compiler/")  # Store HTML with placeholders
+        help_text="Variables format {{var}}  ,for preview copy html content and paste it on https://www.programiz.com/html/online-compiler/")  # Store HTML with placeholders
 
     def __str__(self):
         return self.name

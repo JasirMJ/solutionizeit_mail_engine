@@ -2,6 +2,10 @@
 
 You can customize your emails using templates using variables
 
+Add 'mail_configuration' in your installed app after installing this package
+
+Then migrate to apply related changes for your project
+
 ## OTP Sample:
 
 ```
