@@ -20,3 +20,12 @@ twine upload --verbose  --repository testpypi dist/*
 
 twine upload --verbose  dist/*
 
+==================================================
+After each version update, tag the release in Git:
+==================================================
+
+```
+git tag v1.0.1
+
+git push origin v1.0.1
+```
