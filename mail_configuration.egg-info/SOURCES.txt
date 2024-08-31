@@ -6,7 +6,9 @@ setup.py
 mail_configuration/__init__.py
 mail_configuration/admin.py
 mail_configuration/apps.py
+mail_configuration/constants.py
 mail_configuration/models.py
+mail_configuration/serializers.py
 mail_configuration/tests.py
 mail_configuration/utils.py
 mail_configuration/views.py

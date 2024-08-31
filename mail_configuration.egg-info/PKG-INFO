@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mail-configuration
-Version: 0.0.2
+Version: 0.0.3
 Summary: A Django app for configuring mail
 Home-page: https://github.com/JasirMJ/solutionizeit_mail_engine
 Author: jasirmj
@@ -26,6 +26,10 @@ License-File: LICENSE
 # Custom Mailer
 
 You can customize your emails using templates using variables
+
+Add 'mail_configuration' in your installed app after installing this package
+
+Then migrate to apply related changes for your project
 
 ## OTP Sample:
 
