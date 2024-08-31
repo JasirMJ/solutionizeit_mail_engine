@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mail-configuration
-Version: 0.0.3
+Version: 1.0.0
 Summary: A Django app for configuring mail
 Home-page: https://github.com/JasirMJ/solutionizeit_mail_engine
 Author: jasirmj
@@ -36,7 +36,7 @@ Then migrate to apply related changes for your project
 ```
 payload = {
     "mail_service": "smtp",
-    "email_from": "goshweet@gmail.com",
+    "email_from": "solutionizeit.x@gmail.com",
     "recipient_list": "jasirmj@gmail.com",
     "subject": "Test Mail",
     "html_template": "OTP",
@@ -78,7 +78,7 @@ sendMail(**payload)
 ```
 payload = {
     "mail_service": "smtp",
-    "email_from": "goshweet@gmail.com",
+    "email_from": "solutionizeit.x@gmail.com",
     "recipient_list": "jasirmj@gmail.com",
     "subject": "Test Mail",
     "html_template": "invoice",

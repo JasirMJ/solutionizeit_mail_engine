@@ -24,7 +24,7 @@ def driver_function(request):
     print("Driver function called")
     payload = {
         "mail_service": "smtp",
-        "email_from": "goshweet@gmail.com",
+        "email_from": "solutionizeit.x@gmail.com",
         "recipient_list": "jasirmj@gmail.com",
         "subject": "Test Mail",
         "html_template": "OTP",

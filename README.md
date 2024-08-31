@@ -11,7 +11,7 @@ Then migrate to apply related changes for your project
 ```
 payload = {
     "mail_service": "smtp",
-    "email_from": "goshweet@gmail.com",
+    "email_from": "solutionizeit.x@gmail.com",
     "recipient_list": "jasirmj@gmail.com",
     "subject": "Test Mail",
     "html_template": "OTP",
@@ -53,7 +53,7 @@ sendMail(**payload)
 ```
 payload = {
     "mail_service": "smtp",
-    "email_from": "goshweet@gmail.com",
+    "email_from": "solutionizeit.x@gmail.com",
     "recipient_list": "jasirmj@gmail.com",
     "subject": "Test Mail",
     "html_template": "invoice",
