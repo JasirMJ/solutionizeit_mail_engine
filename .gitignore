@@ -4,3 +4,11 @@ __pycache__/
 .DS_Store
 *.sqlite3
 venv/
+.env/
+dist/
+build/
+*.egg-info/
+mail_configuration.egg-info/
+*.log
+*.bak
+*.swp

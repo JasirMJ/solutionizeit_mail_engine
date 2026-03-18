@@ -4,9 +4,28 @@ You can customize your emails using templates using variables
 
 Add 'mail_configuration' in your installed app after installing this package
 
+```
+INSTALLED_APPS = [
+    ...
+    'mail_configuration',
+    ... 
+]
+```
+
+
 Then migrate to apply related changes for your project
 
-## OTP Sample:
+```
+python manage.py migrate
+```
+
+
+
+## Configure your email templates and send emails
+
+Go to admin panel and configure your email templates on the app name 'mail_configuration', email template format is provided below
+
+### Sample OTP payload
 
 ```
 payload = {
@@ -25,7 +44,7 @@ payload = {
 sendMail(**payload)
 ```
 
-## HTML OTP Template 
+### Sample HTML OTP Template 
 ```
 <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
     <div style="margin:50px auto;width:70%;padding:20px 0">
@@ -48,7 +67,7 @@ sendMail(**payload)
 </div>
 ```
 
-## Invoice Sample:
+##@ Invoice Sample Payload:
 
 ```
 payload = {
@@ -80,7 +99,7 @@ payload = {
 }
 ```
 
-## HTML Invoice Template
+### HTML Invoice Template
 
 ```
 <!DOCTYPE html>
@@ -211,6 +230,28 @@ payload = {
 </body>
 </html>
 ```
+
+## Usage
+
+```
+from mail_configuration.views import sit_send_mail
+
+sit_send_mail(**payload)
+```
+## SMTP Gmail Configuration
+
+Go to your Gmail settings and enable 'Less secure app access'
+After that, you can use your credentials to send emails
+
+Settings.py
+```
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'YOUR_LESS_SECURE_ENABLED_GMAIL'
+EMAIL_HOST_PASSWORD = 'YOUR_APP_PASSWORD'
+```
+
 
 # Mailing Service Config
 
