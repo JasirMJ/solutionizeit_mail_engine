@@ -28,6 +28,8 @@ Go to admin panel and configure your email templates on the app name 'mail_confi
 ### Sample OTP payload
 
 ```
+from mail_configuration.views import sit_send_mail
+
 payload = {
     "mail_service": "smtp",
     "email_from": "solutionizeit.x@gmail.com",
@@ -41,7 +43,7 @@ payload = {
     }
 }
 
-sendMail(**payload)
+sit_send_mail(**payload)
 ```
 
 ### Sample HTML OTP Template 
